@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    [ng-cloak] {
+        display: none;
+    }
+    </style>
+    <!--app style-->
+    <link rel="stylesheet" href="lib/todo-app/index.css">
+</head>
+
+<body ng-app="todo">
+    <div ui-view>页面加载中...</div>
+    <!--引入angular相关文件-->
+    <script type="text/javascript" src="lib/angular-1.5.0/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-1.5.0/angular-animate.js"></script>
+    <script type="text/javascript" src="lib/ui-router-0.2.18/angular-ui-router.js"></script>
+    <!--bootstrap-->
+    <!--app-->
+    <script type="text/javascript" src="app/app.js"></script>
+    <!--route-->
+    <script type="text/javascript" src="app/route/todo.js"></script>
+    <!--controller-->
+    <script type="text/javascript" src="app/controller/todo.js"></script>
+    <!--service-->
+    <script type="text/javascript" src="app/service/todoStorage.js"></script>
+    <!--service-->
+    <script type="text/javascript" src="app/directive/todoEscape.js"></script>
+    
+</body>
+
+</html>
