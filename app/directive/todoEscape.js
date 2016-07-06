@@ -9,6 +9,7 @@ todo.directive('todoEscape', function() {
 
     var ESCAPE_KEY = 27;
 
+    //按ESC退出编辑
     return function(scope, elem, attrs) {
         elem.bind('keydown', function(event) {
             if (event.keyCode === ESCAPE_KEY) {

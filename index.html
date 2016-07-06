@@ -10,10 +10,13 @@
     </style>
     <!--app style-->
     <link rel="stylesheet" href="lib/todo-app/index.css">
+    <link rel="stylesheet" href="lib/todo-app/spinner.css">
 </head>
 
 <body ng-app="todo">
-    <div ui-view>页面加载中...</div>
+    <div ui-view>
+        
+    </div>
     <!--引入angular相关文件-->
     <script type="text/javascript" src="lib/angular-1.5.0/angular.js"></script>
     <script type="text/javascript" src="lib/angular-1.5.0/angular-animate.js"></script>
@@ -27,9 +30,10 @@
     <script type="text/javascript" src="app/controller/todo.js"></script>
     <!--service-->
     <script type="text/javascript" src="app/service/todoStorage.js"></script>
-    <!--service-->
+    <!--directive-->
     <script type="text/javascript" src="app/directive/todoEscape.js"></script>
-    
+    <script type="text/javascript" src="app/directive/todoFocus.js"></script>
+
 </body>
 
 </html>

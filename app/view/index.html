@@ -1,13 +1,13 @@
 <section id="todoapp">
-    <header id="header">
+    <header id="header">`
         <form id="todo-form" ng-submit="addTodo()">
-            <input id="new-todo" placeholder="输入待办事项" ng-model="newTodo" ng-disabled="saving" autofocus>
+            <input id="new-todo" required placeholder="输入待办事项" ng-model="newTodo" ng-disabled="saving" autofocus>
         </form>
     </header>
     <section id="main" ng-show="todos.length" ng-cloak>
         <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
         <label for="toggle-all">Mark all as complete</label>
-        <ul id="todo-list">
+        <ul id="todo-list">`
             <li ng-repeat="todo in todos" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
                 <div class="view">
                     <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
@@ -21,20 +21,25 @@
         </ul>
     </section>
     <footer id="footer" ng-cloak>
-        <span id="todo-count"><strong>{{remainingCount}}</strong>
-                        <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
-                    </span>
+        <span id="todo-count">
+            <span ng-if="remainingCount>0">
+                <strong> （{{ remainingCount }}） </strong>项待办
+            </span>
+            <span ng-if="remainingCount<=0">
+                干的漂亮
+            </span>
+        </span>
         <ul id="filters">
             <li>
-                <a ng-class="{selected: status == ''} " href="#/">All</a>
+                <a ng-class="{selected: status == ''} " href="#/">全部</a>
             </li>
             <li>
-                <a ng-class="{selected: status == 'active'}" href="#/active">Active</a>
+                <a ng-class="{selected: status == 'active'}" href="#/active">待办</a>
             </li>
             <li>
-                <a ng-class="{selected: status == 'completed'}" href="#/completed">Completed</a>
+                <a ng-class="{selected: status == 'completed'}" href="#/completed">完成</a>
             </li>
         </ul>
-        <button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="showClear">Clear completed</button>
+        <button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="showClear">清除已完成</button>
     </footer>
 </section>
