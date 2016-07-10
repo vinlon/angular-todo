@@ -5,10 +5,9 @@
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
-todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'store',
-    function TodoCtrl($scope, $state, $stateParams, $filter, store) {
+todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'todoStorage',
+    function TodoCtrl($scope, $state, $stateParams, $filter, storage) {
         'use strict';
-
         //根据状态显示不同的内容
         var status = $stateParams.status || '';
         var statusFitler = {};
@@ -24,19 +23,18 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'sto
                 statusFitler = {};
                 break;
         }
-
         //初始化待办项列表
         //检测到待办项长度变化时，重新加载数据
         $scope.$watch(function() {
-            return store.todos.length;
+            return storage.todos.length;
         }, function() {
-            $scope.todos = $filter('filter')(store.todos, statusFitler);
+            $scope.todos = $filter('filter')(storage.todos, statusFitler);
         }, true);
         //计算待办项数量
         $scope.$watch(function() {
-            return store.todos;
+            return storage.todos;
         }, function() {
-            $scope.remainingCount = $filter('filter')(store.todos, { completed : false}).length;
+            $scope.remainingCount = $filter('filter')(storage.todos, { completed : false}).length;
         }, true);
 
         //添加待办项
@@ -49,7 +47,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'sto
                 'completed': false
             };
             $scope.saving = true;
-            store.insert(newTodo).then(function() {
+            storage.insert(newTodo).then(function() {
                 $scope.newTodo = '';
             }).finally(function(){
                 $scope.saving = false;
@@ -68,7 +66,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'sto
             if (!$scope.editedTodo) {
                 return;
             }
-            store.put($scope.editedTodo, store.todos.indexOf(todo)).then(
+            storage.put($scope.editedTodo, storage.todos.indexOf(todo)).then(
                 function success() {
                     $scope.editedTodo = null;
                 },
@@ -85,7 +83,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'sto
 
         //切换待办项状态
         $scope.toggleCompleted = function(todo) {
-            store.put(todo, store.todos.indexOf(todo)).then(
+            storage.put(todo, storage.todos.indexOf(todo)).then(
                 function success() {},
                 function error() {
                     //rollback
@@ -105,7 +103,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'sto
 
         //删除待办项
         $scope.removeTodo = function(todo) {
-            store.delete(todo);
+            storage.delete(todo);
         };
 
         //清除已完成的待办项

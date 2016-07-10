@@ -5,16 +5,7 @@ todo.config(
         $stateProvider
             .state('todo', {
                 url: '/{status}',
-                resolve: {
-                    store: function(todoStorage) {
-                        // Get the correct module (API or localStorage).
-                        return todoStorage.then(function(module) {
-                            module.get(); // Fetch the todo records in the background.
-                            return module;
-                        });
-                    }
-                },
-                templateUrl: 'app/view/index.html',
+                templateUrl: 'app/view/todo.html',
                 controller: 'TodoCtrl'
             });
     }
