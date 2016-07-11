@@ -10,24 +10,24 @@ todo.controller('AuthCtrl', ['$scope', '$state', '$stateParams', '$filter', 'aut
         'use strict';
         //登录
         $scope.dataLoading = false;
-        $scope.login = function(){
+        $scope.login = function() {
             $scope.dataLoading = true;
-            auth.login($scope.user.username, $scope.user.password).then(function(response){
-                if(response.return_code == 200){
+            auth.login($scope.user.username, $scope.user.password).then(function(response) {
+                if (response.return_code == 200) {
                     $state.go('todo');
-                }else{
+                } else {
                     $scope.error = response.return_msg;
                 }
-            }).finally(function(){
+            }).finally(function() {
                 $scope.dataLoading = false;
             });
         };
 
-        $scope.logout = function(){
-            auth.logout().then(function(response){
-                if(response.return_code == 200){
+        $scope.logout = function() {
+            auth.logout().then(function(response) {
+                if (response.return_code == 200) {
                     $state.go('login');
-                }else{
+                } else {
                     $scope.error = response.return_msg;
                 }
             });

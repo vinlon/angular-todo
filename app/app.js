@@ -24,13 +24,13 @@ todo.run(function($http, $cookies, $rootScope, $state, $stateParams) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     }
 
-    $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
         // redirect to login page if not logged in
         if (toState.name !== 'login' && !$rootScope.globals.currentUser) {
             $state.go('login');
         }
         //如果进入登录页时检测到已登录，则直接跳转到首页
-        if(toState.name == 'login' && $rootScope.globals.currentUser){
+        if (toState.name == 'login' && $rootScope.globals.currentUser) {
             $state.go('todo');
         }
     });
