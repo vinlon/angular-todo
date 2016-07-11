@@ -18,6 +18,8 @@ todo.controller('AuthCtrl', ['$scope', '$state', '$stateParams', '$filter', 'aut
                 }else{
                     $scope.error = response.return_msg;
                 }
+            }).finally(function(){
+                $scope.dataLoading = false;
             });
         };
 

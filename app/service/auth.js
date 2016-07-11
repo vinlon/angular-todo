@@ -15,7 +15,7 @@ todo.factory('auth', ['$q', '$rootScope', '$cookies' ,'Base64',
             var login_success = username === 'test' && password === 'test' ;
             if(!login_success) {
                 response.return_code = -1;
-                response.message = '用户名或密码错误';
+                response.return_msg = '用户名或密码错误';
             }else{
                 var authdata = base64.encode(username + ':' + password);
 
