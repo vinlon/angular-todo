@@ -1,12 +1,12 @@
 'use strict';
 
-todo.factory('Base64', function () {
+todo.factory('Base64', function() {
     /* jshint ignore:start */
 
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
     return {
-        encode: function (input) {
+        encode: function(input) {
             var output = "";
             var chr1, chr2, chr3 = "";
             var enc1, enc2, enc3, enc4 = "";
@@ -40,7 +40,7 @@ todo.factory('Base64', function () {
             return output;
         },
 
-        decode: function (input) {
+        decode: function(input) {
             var output = "";
             var chr1, chr2, chr3 = "";
             var enc1, enc2, enc3, enc4 = "";

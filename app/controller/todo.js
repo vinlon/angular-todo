@@ -34,7 +34,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'tod
         $scope.$watch(function() {
             return storage.todos;
         }, function() {
-            $scope.remainingCount = $filter('filter')(storage.todos, { completed : false}).length;
+            $scope.remainingCount = $filter('filter')(storage.todos, { completed: false }).length;
         }, true);
 
         //添加待办项
@@ -49,7 +49,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'tod
             $scope.saving = true;
             storage.insert(newTodo).then(function() {
                 $scope.newTodo = '';
-            }).finally(function(){
+            }).finally(function() {
                 $scope.saving = false;
             });
         };
@@ -109,7 +109,7 @@ todo.controller('TodoCtrl', ['$scope', '$state', '$stateParams', '$filter', 'tod
         //清除已完成的待办项
         $scope.clearCompletedTodos = function() {
             $scope.todos.forEach(function(todo) {
-                if(todo.completed){
+                if (todo.completed) {
                     $scope.removeTodo(todo);
                 }
             });
