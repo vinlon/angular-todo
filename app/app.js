@@ -36,6 +36,11 @@ todo.run(function($http, $cookies, $rootScope, $state, $stateParams) {
     });
 })
 
+// Disable Debug Data
+.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(false);
+}])
+
 .config(function($urlRouterProvider) {
     'use strict';
 
