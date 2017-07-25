@@ -130,6 +130,7 @@ label[for='toggle-all'] {
 	height: 34px;
 	text-align: center;
 	border: none; /* Mobile Safari */
+	outline: none;
 }
 
 #toggle-all:before {
